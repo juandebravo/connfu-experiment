@@ -4,7 +4,6 @@ module ConnfuExperiment
     def initialize(endpoint, api_key)
       @endpoint = endpoint
       @api_key = api_key
-      run(&Proc.new) if block_given?
     end
 
     def run

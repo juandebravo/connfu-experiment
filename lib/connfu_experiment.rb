@@ -8,12 +8,12 @@ module ConnfuExperiment
   autoload :Listener  , 'connfu_experiment/listener'
   autoload :Formatter , 'connfu_experiment/formatter'
   autoload :Dispatcher, 'connfu_experiment/dispatcher'
+  autoload :DSL       , 'connfu_experiment/dsl'
 
   class << self
     def start api_key
-      Listener.new ENDPOINT, api_key do |msj|
-        print msj
-      end
+      DSL.run &Proc.new
+      Listener.new(ENDPOINT, api_key).run
     end
   end
 end
