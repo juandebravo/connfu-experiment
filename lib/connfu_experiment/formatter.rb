@@ -10,11 +10,15 @@ module ConnfuExperiment
         if chunk.is_a?(Array)
           events = []
           chunk.each do |message|
-            message = JSON.parse message
-            if message.is_a?(Array)
-              events << format_sms(message)
-            else
-              events << format_rss(message)
+            begin
+              message = JSON.parse message
+              if message.is_a?(Array)
+                events << format_sms(message)
+              else
+                events << format_rss(message)
+              end
+            rescue Exception => ex
+              puts "error while parsing"
             end
           end
           events.flatten
