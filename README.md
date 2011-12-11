@@ -21,7 +21,7 @@ ConnfuExperiment is an approach to create a client that listens to an HTTP conne
 ```ruby
 require 'connfu_experiment'
 
-ConnfuExperiment.start "valid-api-ley" do
+ConnfuExperiment.start "valid-api-key" do
   
   listen :sms do |msg|
     puts "Just got an SMS from #{msg[:from]} to #{msg[:to]}: \
